@@ -1,40 +1,76 @@
-## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+# [Monitoring Network System](http://dte-network.surge.sh/)
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
-
-> Free React Admin Dashboard made with Material-UI components and React.
+> Dashboard made with Material-UI components and React.
 
 ![preview](public/static/preview.png)
 
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **7** Demo pages                                      | **40** demo pages                                                 |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
+# Introduction
 
-## Page demo
+## Introduction topic
 
-- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Register](https://minimal-kit-react.vercel.app/register)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
+- Web-based allow users to monitor network system via Zabbix server.
 
-## Getting started
+## Technology
 
-- Recommended `node js 14+` and `npm 6+`
-- Install dependencies: `npm install` or `yarn install`
-- Start the server: `npm run start` or `yarn start`
+- Programming language: HTML, CSS, Javascript
+- Server: Zabbix
+- Database: MySQL (in Zabbix)
+- Library:
+  - Axios
+  - Material-UI
 
-## License
+# Main Functions
 
-Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
+## Register new user
+
+- Just enter the necessary information such as name, email, password to be able to register a new account.
+
+![Register new user](public/static/register.png)
+
+## Reset your password
+
+- The user can retrieve the forgotten password via the previously registered email.
+
+![Reset password](public/static/forgotpass.png)
+
+- Change password successfully and user login again.
+
+![Login](public/static/login.png)
+
+- Host information
+
+## Enter the IP Address
+
+- Enter the IP Address and press GET button.
+
+![IP Address](public/static/ipadd.png)
+
+- Host information
+
+![Dashboard](public/static/dashboard.png)
+
+- Notifications
+
+![Dashboard](public/static/notify.png)
+
+- Click ![Button](public/static/button.png) to choose the host server.
+
+![Choose Host](public/static/choose.png)
+
+- Item information
+
+![Item Information](public/static/item.png)
+
+- Chart Information
+
+![Chart Information](public/static/chart.png)
+
+## References
+
+- https://www.zabbix.com/documentation/5.0/manual/api
+- https://github.com/axios/axios
 
 ## Contact us
 
-Email Us: support@minimals.cc
+- huy.bui38@hcmut.edu.vn
+- tu.do.bk.la@hcmut.edu.vn
