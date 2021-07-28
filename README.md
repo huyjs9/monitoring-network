@@ -16,8 +16,9 @@
 - Server: Zabbix
 - Database: MySQL (in Zabbix)
 - Library:
-  - Axios
-  - Material-UI
+  - Axios: Promise based HTTP client for the browser and node.js.
+  - Material UI: Build awesome Web UI quickly and easily.
+  - Zabbix RPC.
 
 # Main Functions
 
@@ -69,6 +70,8 @@
 
 - https://www.zabbix.com/documentation/5.0/manual/api
 - https://github.com/axios/axios
+- https://github.com/FaCuZ/zabbix-rpc#readme
+- https://blog.zabbix.com/zabbix-api-explained/9155/
 
 ## Contact us
 
