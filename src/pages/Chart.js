@@ -1,9 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Icon } from '@iconify/react';
 import plusFill from '@iconify/icons-eva/plus-fill';
-import { Link as RouterLink } from 'react-router-dom';
+// import { Link as RouterLink } from 'react-router-dom';
 // material
-import { Grid, Button, Container, Stack, Typography } from '@material-ui/core';
+import {
+	Grid,
+	Button,
+	Container,
+	Stack,
+	Typography,
+	Box,
+	Link,
+	Card,
+} from '@material-ui/core';
+
 // components
 import Page from '../components/Page';
 import { ChartCard } from '../components/_dashboard/piechart';
@@ -12,6 +22,8 @@ import POSTS from '../_mocks_/blog';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import chartApi from 'src/api/chartApi';
+import graphApi from 'src/api/graphApi';
+import { SelectOption, SelectTime } from 'src/components/charts';
 
 // ----------------------------------------------------------------------
 
@@ -25,8 +37,20 @@ const SORT_OPTIONS = [
 
 export default function Blog() {
 	const [chartx, setChartx] = useState([]);
+	const [graphx, setGraphx] = useState([]);
+	const [selected, setSelected] = useState(''); // Handle select option
+	const [selectTime, setSelectTime] = useState('1h'); // Handle select option
+
 	const hostData = useSelector((state) => state.host);
 	const ipUrl = useSelector((state) => state.ipaddress);
+
+	const handleSelected = (value) => {
+		setSelected(value);
+	};
+
+	const handleSelectTime = (value) => {
+		setSelectTime(value);
+	};
 
 	let hostgroup = [];
 	for (let i = 0; i < hostData.length; i++) {
@@ -37,7 +61,9 @@ export default function Blog() {
 		async function AutoChart() {
 			try {
 				const chartData = await chartApi.post(ipUrl, hostgroup);
+				const graphData = await graphApi.post(ipUrl, selected);
 				setChartx(chartData.data.result); //Lưu dữ liệu mảng Chart
+				setGraphx(graphData.data.result);
 			} catch (err) {
 				throw err;
 			}
@@ -47,8 +73,9 @@ export default function Blog() {
 		return () => {
 			clearInterval(timeInterval);
 		};
-	}, [hostData]);
+	}, [hostData, selected]);
 	console.log('5 phut chart', chartx);
+	console.log('graph', graphx);
 
 	let arrtest = [];
 
@@ -80,9 +107,7 @@ export default function Blog() {
 					arrtest[y].lable.replace('Memory utilization', '') &&
 						arrtest[y].lable.replace(': Memory utilization', '')
 				);
-				seriesvalue.push(
-					Number(parseFloat(arrtest[y].value).toFixed(1))
-				);
+				seriesvalue.push(Number(parseFloat(arrtest[y].value).toFixed(1)));
 				seriesvalue.push(
 					Number((100 - parseFloat(arrtest[y].value)).toFixed(1))
 				);
@@ -95,6 +120,7 @@ export default function Blog() {
 	for (let i = 0; i < seriesvalue.length; i += 2) {
 		sepratevalue.push(seriesvalue.slice(i, i + 2));
 	}
+
 	return (
 		<Page title="Chart | Monitoring-UI">
 			<Container>
@@ -129,11 +155,35 @@ export default function Blog() {
 							/>
 						</Grid>
 					))}
-
 					{/* {POSTS.map((post, index) => (
 						<BlogPostCard key={post.id} post={post} index={index} />
 					))} */}
 				</Grid>
+
+				{/* <Stack
+					direction="row"
+					alignItems="center"
+					justifyContent="space-between"
+					mb={5}
+				>
+					<Typography variant="h4" gutterBottom>
+						Graph List
+					</Typography>
+				</Stack>
+
+				<Grid container spacing={3}>
+					<Grid item xs={12}>
+						<Box display="flex">
+							<Box display="inline-block" style={{ padding: 10 }}>
+								<SelectOption onSelected={handleSelected} />
+							</Box>
+							<Box display="inline-block" style={{ padding: 10 }}>
+								<SelectTime onSelectTime={handleSelectTime} />
+							</Box>
+						</Box>
+					</Grid>
+
+				</Grid> */}
 			</Container>
 		</Page>
 	);

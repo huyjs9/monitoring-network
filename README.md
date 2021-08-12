@@ -1,5 +1,9 @@
 # [Monitoring Network System](http://dte-network.surge.sh/)
 
+[[Set up Zabbix server]](src/documents/SetUpZabbix.md)
+
+[[Set up Zabbix notifcations via email]](src/documents/SetUpAlert.md)
+
 > Dashboard made with Material-UI components and React.
 
 ![preview](public/static/preview.png)

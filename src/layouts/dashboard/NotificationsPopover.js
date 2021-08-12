@@ -164,7 +164,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function NotificationsPopover() {
+function NotificationsPopover() {
 	const anchorRef = useRef(null);
 	const [open, setOpen] = useState(false);
 	const [openDialog, setOpenDialog] = useState(false);
@@ -203,7 +203,8 @@ export default function NotificationsPopover() {
 
 	// ADD FUNCTION
 	function addSchool(newSchool) {
-		ref.doc(newSchool.id)
+		ref
+			.doc(newSchool.id)
 			.set(newSchool)
 			.catch((err) => {
 				console.error(err);
@@ -212,7 +213,8 @@ export default function NotificationsPopover() {
 
 	//DELETE FUNCTION
 	function deleteSchool(school) {
-		ref.doc(school.id)
+		ref
+			.doc(school.id)
 			.delete()
 			.catch((err) => {
 				console.error(err);
@@ -229,6 +231,7 @@ export default function NotificationsPopover() {
 					const alertData = await alertApi.post(ipUrl, hostgroup);
 					setAlertData(alertData.data.result);
 					setValue(alertData.data.result.length);
+
 					dispatch(setAlertLength(alertData.data.result.length));
 				} else {
 					setAlertData([]);
@@ -470,13 +473,8 @@ export default function NotificationsPopover() {
 					}}
 				>
 					<Box sx={{ flexGrow: 1 }}>
-						<Typography variant="subtitle1">
-							Notifications
-						</Typography>
-						<Typography
-							variant="body2"
-							sx={{ color: 'text.secondary' }}
-						>
+						<Typography variant="subtitle1">Notifications</Typography>
+						<Typography variant="body2" sx={{ color: 'text.secondary' }}>
 							You have {totalUnRead} unread messages
 						</Typography>
 					</Box>
@@ -489,11 +487,7 @@ export default function NotificationsPopover() {
 									handleMarkAllAsRead();
 								}}
 							>
-								<Icon
-									icon={doneAllFill}
-									width={20}
-									height={20}
-								/>
+								<Icon icon={doneAllFill} width={20} height={20} />
 							</IconButton>
 						</Tooltip>
 					)}
@@ -600,9 +594,7 @@ export default function NotificationsPopover() {
 			>
 				{currentindex != null && sixmessages.length > 0 && (
 					<DialogTitle id="alert-dialog-slide-title">
-						{sixmessages[currentindex].status.includes(
-							'PROBLEM'
-						) === true ? (
+						{sixmessages[currentindex].status.includes('PROBLEM') === true ? (
 							<Alert variant="outlined" severity="error">
 								<AlertTitle style={{ padding: 'none' }}>
 									<Box fontSize={20}>Problem Detail</Box>
@@ -627,29 +619,22 @@ export default function NotificationsPopover() {
 								<Box>{sixmessages[currentindex].name}</Box>
 								<Box>{sixmessages[currentindex].time}</Box>
 								<Box>
-									<Box
-										display="inline-block"
-										fontWeight="fontWeightMedium"
-									>
+									<Box display="inline-block" fontWeight="fontWeightMedium">
 										Status:
 									</Box>
 									<Box display="inline-block">
-										{sixmessages[
-											currentindex
-										].status.replace('Status:', '')}
+										{sixmessages[currentindex].status.replace('Status:', '')}
 									</Box>
 								</Box>
 								<Box>
-									<Box
-										display="inline-block"
-										fontWeight="fontWeightMedium"
-									>
+									<Box display="inline-block" fontWeight="fontWeightMedium">
 										Severity:
 									</Box>
 									<Box display="inline-block">
-										{sixmessages[
-											currentindex
-										].severity.replace('Severity:', '')}
+										{sixmessages[currentindex].severity.replace(
+											'Severity:',
+											''
+										)}
 									</Box>
 								</Box>
 
@@ -726,8 +711,7 @@ export default function NotificationsPopover() {
 									<TableCell>{item.name}</TableCell>
 									<TableCell>{item.time}</TableCell>
 									<TableCell>
-										{item.status.includes('Status:') ===
-										true
+										{item.status.includes('Status:') === true
 											? item.status.replace('Status:', '')
 											: ''}
 									</TableCell>
@@ -735,35 +719,21 @@ export default function NotificationsPopover() {
 										<Label
 											variant="ghost"
 											color={
-												(item.severity.includes(
-													'Warning'
-												) === true &&
+												(item.severity.includes('Warning') === true &&
 													'warning') ||
-												(item.severity.includes(
-													'Information'
-												) === true &&
+												(item.severity.includes('Information') === true &&
 													'info') ||
 												'error'
 											}
 										>
-											{item.severity.includes(
-												'Severity:'
-											) === true
-												? item.severity.replace(
-														'Severity:',
-														''
-												  )
+											{item.severity.includes('Severity:') === true
+												? item.severity.replace('Severity:', '')
 												: ''}
 										</Label>
 									</TableCell>
 									<TableCell align="right">
-										{item.graphic.includes(
-											'Item Graphic:'
-										) === true
-											? item.graphic.replace(
-													'Item Graphic:',
-													''
-											  )
+										{item.graphic.includes('Item Graphic:') === true
+											? item.graphic.replace('Item Graphic:', '')
 											: ''}
 									</TableCell>
 								</TableRow>
@@ -774,3 +744,4 @@ export default function NotificationsPopover() {
 		</>
 	);
 }
+export default React.memo(NotificationsPopover);
