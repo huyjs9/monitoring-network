@@ -89,31 +89,27 @@ SELINUX=disabled
 
 ## Step 5: Configure web frontend using URL _*"http://server_ip_or_dns_name/zabbix"*_
 
-![Step 1](public/static/../../../../public/static/zabbix/step1.png)
+<p align="center"><img src="public/static/../../../../public/static/zabbix/step1.png"></img></p>
 
 <p align="center"><em>Figure 1: Welcome screen</em></p>
 
-![Step 2](public/static/../../../../public/static/zabbix/step2.png)
+<p align="center"><img src="public/static/../../../../public/static/zabbix/step2.png"></img></p>
 
 <p align="center"><em>Figure 2: Pre-requisites check</em></p>
 
-![Step 3](public/static/../../../../public/static/zabbix/step3.png)
+<p align="center"><img src="public/static/../../../../public/static/zabbix/step3.png"></img></p>
 
 <p align="center"><em>Figure 3: Configure DB connection</em></p>
 
-![Step 4](public/static/../../../../public/static/zabbix/step4.png)
+<p align="center"><img src="public/static/../../../../public/static/zabbix/step4.png"></img></p>
 
 <p align="center"><em>Figure 4: Configure Zabbix server</em></p>
 
-![Step 4](public/static/../../../../public/static/zabbix/step4.png)
-
-<p align="center"><em>Figure 4: Configure Zabbix server</em></p>
-
-![Step 5](public/static/../../../../public/static/zabbix/step5.png)
+<p align="center"><img src="public/static/../../../../public/static/zabbix/step5.png"></img></p>
 
 <p align="center"><em>Figure 5: Pre-installation summary</em></p>
 
-![Step 6](public/static/../../../../public/static/zabbix/step6.png)
+<p align="center"><img src="public/static/../../../../public/static/zabbix/step6.png"></img></p>
 
 <p align="center"><em>Figure 6: Finish</em></p>
 
@@ -125,6 +121,6 @@ Use Zabbix default admin username **"Admin"** and password **"zabbix"** (without
 
 <p align="center"><em>Figure 7: Zabbix login page</em></p>
 
-![Step 6](public/static/../../../../public/static/zabbix/step8.png)
+<p align="center"><img src="public/static/../../../../public/static/zabbix/step8.png"></img></p>
 
 <p align="center"><em>Figure 8: Zabbix 5.0 dashboard</em></p>
